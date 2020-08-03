@@ -1,0 +1,22 @@
+h1 {
+  margin: 30px 0;
+}
+
+.container .alert{
+  margin: 16px 0;
+}
+
+#error_explanation {
+  color: red;
+  ul {
+    color: red;
+    margin: 0 0 30px 0;
+  }
+}
+
+.field_with_errors {
+  @extend .has-error !optional;
+  .form-control {
+    color: gray;
+  }
+}
