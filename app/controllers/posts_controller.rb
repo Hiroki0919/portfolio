@@ -15,11 +15,15 @@ class PostsController < ApplicationController
       flash[:success] = "投稿しました"
       redirect_to root_path
     else
-      render 'posts/new'
+        render 'posts/new', flash:{
+        post: post,
+        error_messages: post.errors.full_messages
+      }
     end
   end
 
   def show
+    @comment = Comment.new(post_id: @post.id)
   end
 
   def edit
