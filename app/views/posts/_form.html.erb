@@ -1,5 +1,6 @@
+<%= render 'shared/error_messages' %>
+
 <%= form_with model: @post do |f| %>
-  <%= render 'shared/error_messages', object: f.object %>
   <div class="form-group">
     <%= f.label :title, 'タイトル' %>
     <%= f.text_field :title, class: 'form-control' %>
