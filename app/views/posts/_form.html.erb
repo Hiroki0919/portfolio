@@ -3,11 +3,12 @@
 <%= form_with model: @post do |f| %>
   <div class="form-group">
     <%= f.label :title, 'タイトル' %>
-    <%= f.text_field :title, class: 'form-control' %>
+    <%= f.text_field :title, class: 'form-control', placeholder %>
   </div>
   <div class="form-group">
     <%= f.label :body, '本文' %>
-    <%= f.text_area :content, class: 'form-control', rows: 10 %>
+    <%= f.text_area :content, class: 'form-control', rows: 10, value:
+    "###ここに" %>
   </div>
   <div class="form-group">
     <span>タグ</span>
