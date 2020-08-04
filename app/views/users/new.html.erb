@@ -1,0 +1,47 @@
+<h1>ユーザー登録</h1>
+
+<%= render 'shared/error_messages' %>
+
+<%= form_with model: @user do |f| %>
+    <div class="form-group">
+      <%= f.label :name, "ユーザー名" %>
+      <%= f.text_field :name, class: "form-control",:placeholder => "ユーザー名"%>
+    </div>
+    <div class="form-group">
+      <%= f.label :email, "メールアドレス" %>
+      <%= f.email_field :email, class: "form-control",:placeholder => "user@example.com"%>
+    </div>
+    <div class="form-group">
+      <%= f.label :password, "パスワード" %>
+      <%= f.password_field :password, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :password_confirmation, "確認用パスワード" %>
+      <%= f.password_field :password_confirmation, class: "form-control" %>
+    </div>
+    
+    <div class="form-group">
+      <%= f.label :gender,"性別" %>
+      <%= f.select :gender, ['男性','女性','どちらでもない'] , {selected: '男性' },  {class: 'form-control'} %>
+    </div>
+    <div class="form-group">
+      <%= f.label :age ,"年齢"%>
+      <%= f.text_field :age, class: "form-control" ,:placeholder => 25 %>
+    </div>
+    <div class="form-group">
+      <%= f.label :job,"職業" %>
+      <%= f.text_field :job, class: "form-control",:placeholder => "例）大学４年生" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :area,"勤務地域" %>
+      <%= f.text_field :area, class: "form-control",:placeholder => "例）東京都" %>
+    </div>
+    
+    <div class="form-group">
+      <%= f.label :intro, "自己紹介文" %>
+      <%= f.text_area :intro, class: "form-control",:placeholder => "例）夢に向かって頑張りたいです" %>
+      <p class="help-block">登録後の設定も可能です。</p>
+    </div>
+
+  <%= f.submit '作成', class: 'btn btn-primary' %>
+<% end %>
