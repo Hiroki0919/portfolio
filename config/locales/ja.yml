@@ -1,11 +1,21 @@
 ja:
   activerecord:
-    models:
-      post: 投稿
     attributes:
+      user:
+        name: ユーザー名
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード（確認）
+        gender: 性別
+        age: 年齢
+        job: 職業
+        area: 勤務地
+        intro: 自己紹介
       post:
         title: タイトル
         body: 本文
+      comment:
+        comment: コメント
   views:
     pagination:
       first: 最初
