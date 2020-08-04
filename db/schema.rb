@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_03_130435) do
+ActiveRecord::Schema.define(version: 2020_08_03_131512) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "post_id", null: false
@@ -18,6 +18,15 @@ ActiveRecord::Schema.define(version: 2020_08_03_130435) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["post_id"], name: "index_comments_on_post_id"
+  end
+
+  create_table "post_tag_rels", force: :cascade do |t|
+    t.integer "post_id", null: false
+    t.integer "tag_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_id"], name: "index_post_tag_rels_on_post_id"
+    t.index ["tag_id"], name: "index_post_tag_rels_on_tag_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -34,4 +43,6 @@ ActiveRecord::Schema.define(version: 2020_08_03_130435) do
   end
 
   add_foreign_key "comments", "posts"
+  add_foreign_key "post_tag_rels", "posts"
+  add_foreign_key "post_tag_rels", "tags"
 end
