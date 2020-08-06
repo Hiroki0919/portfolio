@@ -11,20 +11,19 @@ class PostsController < ApplicationController
   end
 
   def create
-    post=Post.new(post_params)
+    post = @current_user.posts.new(post_params)
     if post.save
       flash[:success] = "投稿しました"
       redirect_to root_path
     else
-        render 'posts/new', flash:{
-        post: post,
-        error_messages: post.errors.full_messages
-      }
+        render 'new'
     end
   end
 
   def show
-    @comment = Comment.new(post_id: @post.id)
+    @comment = Comment.new(post_id: @post.id, user_id: @post.user.id)
+    @like = Like.new
+    @feel = Feel.new
   end
 
   def edit

@@ -18,3 +18,37 @@
   display: inline-block;
   width: auto;
 }
+
+.textarea{
+  height: 40px;
+}
+
+.like-btn {
+    width: 25px;
+    height: 30px;
+    font-size: 25px;
+    color: #e54747;
+  }
+ 
+ .unlike-btn {
+    width: 25px;
+    height: 30px;
+    font-size: 25px;
+    color: #161515;
+  }
+
+  .good{
+    width: 25px;
+    height: 30px;
+    font-size: 25px;
+    color: #4185eb;
+    margin-left: 20px;
+  }
+
+  .bad{
+    width: 25px;
+    height: 30px;
+    font-size: 25px;
+    color: #161515;
+    margin-left: 20px;
+  }
