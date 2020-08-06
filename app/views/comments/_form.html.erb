@@ -2,8 +2,9 @@
 
 <div class="p-comment__formBox">
   <p class="p-comment__formTitle">コメント記入</p>
-  <%= form_with model: @comment do |f| %>
+  <%= form_with model: comment do |f| %>
     <%= f.hidden_field :post_id %>
+    <%= f.hidden_field :user_id %>
     <div class="form-group >
       <%= f.label :comment, 'コメント' %>
       <%= f.text_area :comment, class: 'form-control', rows: 10 %>

@@ -1,31 +1,26 @@
-  
-<div class="d-flex align-items-center">
-  <h1>掲示板一覧</h1>
-  <div class="ml-auto postss__linkBox">
-    <%= form_with url: posts_path, method: :get, class: 'posts__searchForm' do %>
-      <%= select_tag :tag_id, options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
-        { prompt: 'タグで絞り込み',class: 'form-control boards__select', onchange: 'submit(this.form);'}
+<div class="container">
+  <table class="table table-striped">
+    <tr><th>
+    <h2>質問一覧</h2><%= select_tag :tag_id, options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
+      {
+        prompt: 'タグで絞り込み',
+        class: 'form-control boards__select',
+        onchange: 'submit(this.form);'
+      }
       %>
-    <% end %>
-    <%= link_to '新規作成', new_post_path, class: 'btn btn-outline-dark' %>
-  </div>
+    </th></tr>
+    <% @posts.each do |post| %>
+      <tr class ="textarea">
+      <td class="textarea text-dark"><h5><%= link_to post.title, post,:style => "color: black;" %></h5><br>
+      <i class="fa fa-heart"></i>(<%= post.liked_users.count %>)
+      <i class="fa fa-thumbs-up"></i>(<%= post.felt_users.count %>)　　　
+      <%= post.updated_at.to_s(:datetime_jp) %>　　　
+      <%= link_to post.user.name ,user_path(post.user.id), :style => "color: black;" %>
+      | <%= post.user.age%>歳 | <%= post.user.gender%> | <%= post.user.job%>
+      </td>
+      </tr>
+      <% end %>
+  </table>
 </div>
-
-<table class="table table-hover posts__table">
-<thead class="thead-dark">
-  <tr>
-    <th>タイトル</th>
-    <th class = "text-right mr-10">更新日時</th>
-  </tr>
-</thead>
-<tbody>
-  <% @posts.each do |post| %>
-    <tr>
-      <td><%= link_to post.title, post %></td>
-      <td class = "text-right  mr-10"><%= post.updated_at.to_s(:datetime_jp) %></td>
-    </tr>
-  <% end %>
-</tbody>
-</table>
 
 <%= paginate @posts %>

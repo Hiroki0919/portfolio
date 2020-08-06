@@ -1,7 +1,22 @@
+
 .navbar{
   background-color: orange;
+  padding: 30px 30px;
 }
 
+.navbar-brand{
+  font-size: 50px;
+}
+
+#logo{
+  float: left;
+  margin-right: 20px;
+  margin-left: 100px;
+  font-size: 2.0em;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+}
 
 h1 {
   margin: 60px 0;
@@ -25,3 +40,10 @@ h1 {
     color: gray;
   }
 }
+
+.btn{
+   margin: 0 5px 0 0;
+}
+
+
+

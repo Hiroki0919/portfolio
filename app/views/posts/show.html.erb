@@ -16,11 +16,32 @@
   </div>
   <div class = "card-body" %>
     <p class = "card-text"><%= simple_format(@post.content) %></p>
-    <p class = "text-right font-weight-bold mr-10">ユーザーネーム</p>
+    <p class = " font-weight-bold mr-10"><%= link_to @post.user.name ,user_path(@post.user.id), :style => "color: black;" %></p>
+    <% if @current_user.already_liked?(@post) %>
+      <%= link_to post_like_path(@post), method: :delete do %>
+        <i class="fa fa-heart like-btn" ></i>
+      <% end %>
+    <% else %>
+      <%= link_to post_likes_path(@post), method: :post do %>
+        <i class="fa fa-heart unlike-btn"></i>
+      <% end %>
+    <% end %>
+    <%=@post.likes.count%>
+    <% if @current_user.already_felt?(@post) %>
+      <%= link_to post_feel_path(@post), method: :delete do %>
+        <i class="fa fa-thumbs-up good"></i>
+      <% end %>
+    <% else %>
+      <%= link_to post_feels_path(@post), method: :post do %>
+        <i class="fa fa-thumbs-up bad"></i>
+      <% end %>
+    <% end %>
+    <%=@post.feels.count%>
   </div>
+  
 </div>
+<%= render partial: 'comments/form', locals: { comment: @comment } %>
 <div class="p-comment__list">
   <div class="p-comment__listTitle">コメント</div>
   <%= render @post.comments %>
 </div>
-<%= render partial: 'comments/form', locals: { comment: @comment } %>
