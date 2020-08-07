@@ -30,7 +30,7 @@ class PostsController < ApplicationController
   end
 
   def update
-    if @post.update
+    if @post.update(post_params)
       flash[:success] = "編集しました"
       redirect_to @post
     else
@@ -50,6 +50,6 @@ class PostsController < ApplicationController
     end
 
     def set_post
-      @post = Post.find(params[:id])
+      @post = Post.find_by(params[:id])
     end
 end

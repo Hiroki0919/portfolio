@@ -1,0 +1,24 @@
+<%= render 'shared/error_messages' %>
+<%= form_with model: @post do |f| %>
+  <div class="form-group">
+    <h2><%= f.label :title, 'タイトル' %></h2>
+    <%= f.text_field :title, class: 'form-control', placeholder:"質問内容をわかりやすくまとめてください" %>
+  </div>
+  <div class="form-group">
+    <h2><%= f.label :body, '本文' %></h2>
+    <p class="help-block">簡潔な言葉で質問の目的と背景をきちんと説明しましょう！</p>
+    <%= f.text_area :content, class: 'form-control', rows: 10, value: @post.content %> 
+  </div>
+  <div class="form-group">
+    <span>タグ</span>
+    <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+      <div class="form-check">
+        <%= tag.label class: 'form-check-label' do %>
+          <%= tag.check_box class: 'form-check-input' %>
+          <%= tag.text %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  <%= f.submit '保存', class: 'btn btn-primary' %>
+<% end %>

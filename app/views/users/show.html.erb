@@ -1,0 +1,13 @@
+<div class="card" style="width: 1100px;">
+  <div class="card-header">
+    <h4>プロフィール</h4> | <%= link_to "ユーザー削除", @user, method: :delete, data: { confirm: "本当に削除してもいいですか？？" } %> | <%= link_to "編集", edit_user_path(@current_user) %>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">　　名前　　:　　<%= @user.name %></li>
+    <li class="list-group-item">　　性別　　:　　<%= @user.gender %></li>
+    <li class="list-group-item">　　年齢　　:　　<%= @user.age %></li>
+    <li class="list-group-item">　勤務地　　:　　<%= @user.area %></li>
+    <li class="list-group-item">　　職業　　:　　<%= @user.job %></li>
+    <li class="list-group-item">自己紹介文　:　　<%= @user.intro %></li>
+  </ul>
+</div>

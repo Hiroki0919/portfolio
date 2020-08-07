@@ -9,7 +9,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <% if @current_user %>
-          <li><%= link_to 'マイページ', '#' ,class: 'btn btn-outline-dark'%></li>
+          <li><%= link_to 'マイページ', user_path(@current_user) ,class: 'btn btn-outline-dark'%></li>
           <li><%= link_to 'ログアウト', logout_path, method: :delete, class: 'btn btn-outline-dark' %></li>
           <li><%= link_to '質問作成', new_post_path, class: 'btn btn-outline-dark' %></li>
         <% else %>
