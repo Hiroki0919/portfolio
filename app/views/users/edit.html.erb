@@ -1,2 +1,19 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<div class="card" style="width: 1100px;">
+  <div class="card-header">
+    <h4>ユーザー情報の編集</h4>
+  </div>
+  <ul class="list-group list-group-flush">
+    <div class = "form-group">
+      <%= form_with(model: @user, local: true) do |f| %>
+        <li class="list-group-item">名前<%= f.text_field :name, class: 'form-control' %></li>
+        <li class="list-group-item">連絡先<%= f.text_field :email, class: 'form-control' %></li>
+        <li class="list-group-item">性別<%= f.select :gender,['男性','女性','どちらでもない'],{selected: '男性' },{class: 'form-control'}%></li>
+        <li class="list-group-item">年齢<%= f.text_field :age, class: 'form-control'%></li>
+        <li class="list-group-item">勤務地<%= f.text_field :area, class: 'form-control'%></li>
+        <li class="list-group-item">職業<%= f.text_field :job, class: 'form-control'%></li>
+        <li class="list-group-item">自己紹介文<%= f.text_area :intro, class: 'form-control',rows: 10%></li>
+        <%= f.submit "編集を適用する", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </ul>
+</div>
