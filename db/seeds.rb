@@ -15,3 +15,17 @@ if Rails.env == 'development'
     { name: '友人関係' }
   ])
 end
+
+if Rails.env == 'production'
+  Tag.create([
+    { name: '就職' },
+    { name: '仕事' },
+    { name: 'スポーツ' },
+    { name: '習い事'}
+    { name: '学校' },
+    { name: '受験' },
+    { name: '友人関係' }
+    { name: '恋愛'}
+    { name: '家族関係'}
+  ])
+end
