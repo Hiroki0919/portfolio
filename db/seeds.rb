@@ -6,16 +6,12 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 if Rails.env == 'development'
-  (1..50).each do |i|
-    Post.create(title: "タイトル#{i}", content: "内容#{i}")
-  end
-
   Tag.create([
-    { name: 'Ruby' },
-    { name: 'Ruby on Rails4' },
-    { name: 'Ruby on Rails5' },
-    { name: 'Python2' },
-    { name: 'Python3' },
-    { name: 'Django2' }
+    { name: '就職' },
+    { name: '仕事' },
+    { name: 'スポーツ' },
+    { name: '学校' },
+    { name: '受験' },
+    { name: '友人関係' }
   ])
 end

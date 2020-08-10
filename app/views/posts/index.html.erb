@@ -1,13 +1,16 @@
 <div class="container">
   <table class="table table-striped">
     <tr><th>
-    <h2>質問一覧</h2><%= select_tag :tag_id, options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
-      {
-        prompt: 'タグで絞り込み',
-        class: 'form-control boards__select',
-        onchange: 'submit(this.form);'
-      }
+    <h2>質問一覧</h2>
+    <%= form_with url: posts_path, method: :get, class: 'posts__searchForm' do %>
+      <%= select_tag :tag_id, options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
+        {
+          prompt: 'タグで絞り込み',
+          class: 'form-control posts__select',
+          onchange: 'submit(this.form);'
+        }
       %>
+    <% end %>
     </th></tr>
     <% @posts.each do |post| %>
       <tr class ="textarea">
