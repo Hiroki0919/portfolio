@@ -1,6 +1,12 @@
-<div class="card" style="width: 1100px;">
+<div class="card" >
   <div class="card-header">
-    <h4>プロフィール</h4> | <%= link_to "ユーザー削除", @user, method: :delete, data: { confirm: "本当に削除してもいいですか？？" } %> | <%= link_to "編集", edit_user_path(@current_user) %>
+    <div class="d-flex align-items-center">
+        <% if @current_user == @user %>
+          <h4>プロフィール</h4>
+          　　<%= link_to "ユーザー削除", @user, method: :delete, data: { confirm: "本当に削除してもいいですか？？" }, class: 'btn btn-outline-dark' %>
+          <%= link_to "編集", edit_user_path(@current_user), class: 'btn btn-outline-dark' %>
+        <% end %>
+    </div>
   </div>
   <ul class="list-group list-group-flush">
     <li class="list-group-item">　　名前　　:　　<%= @user.name %></li>
@@ -10,4 +16,23 @@
     <li class="list-group-item">　　職業　　:　　<%= @user.job %></li>
     <li class="list-group-item">自己紹介文　:　　<%= @user.intro %></li>
   </ul>
+</div>
+
+<div class="userpost">
+  <table class="table table-striped" >
+    <tr><th>
+    <h4>投稿</h4>
+    </th></tr>
+    <% @posts.each do |post| %>
+      <tr class ="textarea">
+      <td class="textarea text-dark"><h5><%= link_to post.title, post,:style => "color: black;" %></h5><br>
+      <i class="fa fa-heart like-btn"></i>(<%= post.liked_users.count %>)
+      <i class="fa fa-thumbs-up good"></i>(<%= post.felt_users.count %>)　　　
+      <%= post.updated_at.to_s(:datetime_jp) %>　　　
+      <%= link_to post.user.name ,user_path(post.user.id), :style => "color: black;" %>
+      | <%= post.user.age%>歳 | <%= post.user.gender%> | <%= post.user.job%>
+      </td>
+      </tr>
+      <% end %>
+  </table>
 </div>
