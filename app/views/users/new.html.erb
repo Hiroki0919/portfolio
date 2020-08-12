@@ -1,8 +1,6 @@
 <h1>ユーザー登録</h1>
-
-<%= render 'shared/error_messages' %>
-
-<%= form_with model: @user do |f| %>
+<%= form_with(model: @user, local: true) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
     <div class="form-group">
       <%= f.label :name, "ユーザー名" %>
       <%= f.text_field :name, class: "form-control",:placeholder => "ユーザー名"%>

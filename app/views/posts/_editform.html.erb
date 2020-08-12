@@ -1,5 +1,6 @@
 <%= render 'shared/error_messages' %>
 <%= form_with model: @post do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
   <div class="form-group">
     <h2><%= f.label :title, 'タイトル' %></h2>
     <%= f.text_field :title, class: 'form-control', placeholder:"質問内容をわかりやすくまとめてください" %>

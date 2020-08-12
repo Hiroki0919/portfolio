@@ -1,7 +1,4 @@
 class SessionsController < ApplicationController
-  def new
-  end
-
   def create
     @user = User.find_by(email: params[:session][:email])
     if @user && @user.authenticate(params[:session][:password])
@@ -9,6 +6,7 @@ class SessionsController < ApplicationController
       flash[:success] = "ログインしました"
       redirect_to root_path
     else
+      flash[:danger] = "情報が一致しません"
       render 'new'
     end
   end

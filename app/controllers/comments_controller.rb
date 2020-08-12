@@ -5,7 +5,8 @@ class CommentsController < ApplicationController
       flash[:success] = "コメントしました"
       redirect_to comment.post
     else
-      render 'posts/show'
+      flash[:danger] = "内容がないコメントは送信できません"
+      redirect_back(fallback_location: post_path(id: comment.post.id))
     end
   end
 
