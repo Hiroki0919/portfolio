@@ -21,9 +21,14 @@ class PostsController < ApplicationController
   end
 
   def show
-    @comment = Comment.new(post_id: @post.id, user_id: @post.user.id)
-    @like = Like.new
-    @feel = Feel.new
+    if @current_user.nil?
+      flash.now[:danger] = "ログインして下さい"
+      render 'sessions/new'
+    else
+      @comment = Comment.new(post_id: @post.id, user_id: @post.user.id)
+      @like = Like.new
+      @feel = Feel.new
+    end
   end
 
   def edit
