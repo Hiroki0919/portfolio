@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
       flash[:success] = "ログインしました"
       redirect_to root_path
     else
-      flash[:danger] = "情報が一致しません"
+      flash.now[:danger] = "情報が一致しません"
       render 'new'
     end
   end
