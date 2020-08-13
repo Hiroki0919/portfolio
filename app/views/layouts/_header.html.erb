@@ -15,6 +15,7 @@
         <% else %>
           <%= link_to '新規登録', new_user_path, class: 'btn btn-outline-dark' %>
           <%= link_to 'ログイン', login_path, class: 'btn btn-outline-dark' %>
+          <%= link_to '簡単ログイン', guest_path, method: :post, class: 'btn btn-outline-dark' %>
         <% end %>
       </ul>
     </div>
