@@ -25,7 +25,7 @@ class PostsController < ApplicationController
       flash.now[:danger] = "ログインして下さい"
       render 'sessions/new'
     else
-      @comment = Comment.new(post_id: @post.id, user_id: @post.user.id)
+      @comment = Comment.new(post_id: @post.id, user_id: @current_user.id)
       @like = Like.new
       @feel = Feel.new
     end
