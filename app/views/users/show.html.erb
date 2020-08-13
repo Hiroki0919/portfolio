@@ -23,16 +23,22 @@
     <tr><th>
     <h4>投稿</h4>
     </th></tr>
-    <% @posts.each do |post| %>
-      <tr class ="textarea">
-      <td class="textarea text-dark"><h5><%= link_to post.title, post,:style => "color: black;" %></h5><br>
-      <i class="fa fa-heart like-btn"></i>(<%= post.liked_users.count %>)
-      <i class="fa fa-thumbs-up good"></i>(<%= post.felt_users.count %>)　　　
-      <%= post.updated_at.to_s(:datetime_jp) %>　　　
-      <%= link_to post.user.name ,user_path(post.user.id), :style => "color: black;" %>
-      | <%= post.user.age%>歳 | <%= post.user.gender%> | <%= post.user.job%>
-      </td>
-      </tr>
+    <% if @posts.any?%>
+      <% @posts.each do |post| %>
+        <tr class ="textarea">
+        <td class="textarea text-dark"><h5><%= link_to post.title, post,:style => "color: black;" %></h5><br>
+        <i class="fa fa-heart like-btn"></i>(<%= post.liked_users.count %>)
+        <i class="fa fa-thumbs-up good"></i>(<%= post.felt_users.count %>)　　　
+        <%= post.updated_at.to_s(:datetime_jp) %>　　　
+        <%= link_to post.user.name ,user_path(post.user.id), :style => "color: black;" %>
+        | <%= post.user.age%>歳 | <%= post.user.gender%> | <%= post.user.job%>
+        </td>
+        </tr>
       <% end %>
+    <% else %>
+      <tr><th>
+      <p>投稿はありません</p>
+      </th></tr>
+    <% end %>
   </table>
 </div>
